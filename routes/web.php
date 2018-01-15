@@ -11,6 +11,35 @@
 |
  */
 
+use Auth;
+
+Route::get('debug', function () {
+/*
+\Cmgmyr\Messenger\Models\Participant::create([
+'thread_id' => 5,
+'user_id' => Auth::user()->id,
+'read_at' => null,
+]);
+
+\Cmgmyr\Messenger\Models\Participant::create([
+'thread_id' => 5,
+'user_id' => 564564,
+'read_at' => null,
+]);
+ */
+    //$thread->activateAllParticipants();
+    /*
+    $message = \cmgmyr\Messenger\Models\Message::findOrfail(6);
+    dd($message->thread->users->pluck("email"));
+     */
+
+    $thread = \cmgmyr\Messenger\Models\Thread::findorfail(5);
+
+    $thread->attach(6);
+
+    dd("Done");
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
